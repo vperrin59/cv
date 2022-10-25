@@ -10,13 +10,12 @@ jobs:
         run: |
           pip install sphinx sphinx_rtd_theme
       - name: Sphinx build
-        run:
-          - cd docs
-          - make html
+        run: |
+          cd docs && make html
       - name: Deploy
         uses: peaceiris/actions-gh-pages@v3
         if: ${{ github.event_name == 'push'}}
         with:
           github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: build/
+          publish_dir: docs/build/
           force_orphan: true
