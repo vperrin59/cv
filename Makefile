@@ -1,7 +1,8 @@
 .PHONY: examples font_setup
 
-# CC = xelatex
-CC = htlatex
+CC = xelatex
+# HTML
+# CC = htlatex
 EXAMPLES_DIR = examples
 MY_CV_DIR = my_cv
 RESUME_DIR = examples/resume
@@ -27,3 +28,6 @@ coverletter.pdf: $(EXAMPLES_DIR)/coverletter.tex
 
 clean:
 	rm -rf $(EXAMPLES_DIR)/*.pdf
+
+dbg:
+	echo $(CV_SRCS)
