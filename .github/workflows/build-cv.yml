@@ -14,3 +14,9 @@ jobs:
         run: make font_setup
       - name: Building CV
         run: make cv.pdf
+      - name: Store CV
+        uses: actions/upload-artifact@v3
+        with:
+            name: cv
+            path: |
+            my_cv/cv.pdf
