@@ -19,9 +19,16 @@
       \begin{cvitems} % Description(s) of tasks/responsibilities
         \item {Digital design}
         \begin{itemize}
+          \item {\textbf{Integration lead role on PCIe Gen5 SoC (25M gates)}}
+          \begin{itemize}
+            % Number of clocks
+            \item {Responsible of the database management.}
+            \item {Integration of complex IPs, SNPS PHY.}
+          \end{itemize}
           \item {\textbf{Lead role on CPU system implementation}}
           \begin{itemize}
-            \item {IP RTL integration.}
+            \item {Micro-architecture specification.}
+            \item {IP RTL configuration and integration.}
             \item {C toolchain setup.}
             \item {Interface with external DV contractors.}
           \end{itemize}
@@ -68,9 +75,13 @@
         \end{itemize}
         \item {Physical design}
         \begin{itemize}
+          % 500Gbps GW IP, CNRZ 5b6w 6.25 x 4 = 25 Gbps per wire. Per chord -> 125 Gbps. 4 chords -> 500 Gbps
+          % 1UI clk: 25Ghz
+          % 32UI clk: 781.25 Mhz
           \item {Responsible of \textbf{Synthesis and Place and Route flow for a digital SERDES IP in 16nm}.}
           \begin{itemize}
             \item {SDC Timing constraints development and validation.}
+            \item {High speed design: ~800Mhz.}
             \item {Signoff checks:}
             \begin{itemize}
               \item {EMIR and power analysis with Voltus.}
