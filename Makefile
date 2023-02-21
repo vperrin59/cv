@@ -1,4 +1,4 @@
-.PHONY: examples font_setup
+.PHONY: examples font_setup bib
 
 CC = xelatex
 # HTML
@@ -31,3 +31,8 @@ clean:
 
 dbg:
 	echo $(CV_SRCS)
+
+bib:$(MY_CV_DIR)/cv.tex $(MY_CV_DIR)/references.bib
+	biber $(MY_CV_DIR)/cv
+
+all: cv.pdf bib cv.pdf
