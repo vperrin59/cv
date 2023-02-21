@@ -19,7 +19,7 @@
       \begin{cvitems} % Description(s) of tasks/responsibilities
         \item {Digital design}
         \begin{itemize}
-          \item {\textbf{Top chip lead role in PCIe SoC (1GHz, 25M gates + memories, 22mm2)}}
+          \item {\textbf{Top chip lead role in PCIe SoC (1GHz, 25M gates + memories, 22mm2, > 20 clock domains)}}
           \begin{itemize}
             % How many clocks in the system, number of gates, die area
             \item {Collaboration with cross-functional teams, including architect, hardware, software, and PD teams to ensure that the project's deliverables met the necessary specifications.}
@@ -36,22 +36,17 @@
           \end{itemize}
           \item {\textbf{Implementation of high speed USB SERDES RX blocks (833MHz)}}
           \begin{itemize}
-            \item {BIST, Eyescope and various calibration blocks (CTLE, equalizers, ...)}
-            \item {Implemented CDC scheme block and validated them with CDC formal app.}
-            \item {Logic timing optimizations using timing report feedback.}
-            % \item {Designed for testability using ad-hoc logic.}
-            \item {Linting analysis with formal app.}
-            \item {Wrote detailed documentation of the implemented blocks for the verification and AE team.}
-            \item {Developed high level analog model of the whole RX analog chain in SystemVerilog.}
-            \item {\textbf{Dynamic power analysis and manual data/clock gating insertion}.}
-            % \item {Dicussion for optimizing algorithms from the System team.}
+            \item {Implemented high-speed digital logic related to Serdes calibration blocks (CTLE, filters and Eyescope) in collaboration with analog designers, optimizing for power, area, and performance to enable reliable transmission of high-speed data.}
+            \item {Interfaced with the PD team to improve timing and power efficiency of the digital logic through generated reports.}
+            \item {Wrote clear and concise documentation for the Verification and Application Engineer teams, enabling them to quickly understand the design and perform their respective tasks effectively.}
+            \item {Developed a high-level, configurable SystemVerilog model of the RX analog chain (CDR, Demux, filters ...), working closely with analog designers to accurately reflect the behavior of the actual analog circuits. The model also allowed for early validation and verification of digital algorithms, resulting in a more efficient and effective design process}
           \end{itemize}
           \item {\textbf{Work flow improvement}}
           \begin{itemize}
-            \item {Developed Jenkins CI flow from scratch, which greatly improved the quality of the RTL releases.}
-            \item {\textbf{Delivered SVA training for the designers inside the company}.}
-            \item {Continuous improvement of the digital development flow (checkers, automation, reconfigurability).}
-            \item {Implemented and enforced a Git message policy to ensure clear and consistent communication within the project's code repository.}
+            \item {Developed from scratch and maintained the Continuous Integration (CI) flow for the digital team, starting with Jenkins and later migrating to GitLab CI. That Improved the quality of releases by catching issues earlier in the development cycle through the use of automated builds and tests}
+            \item {\textbf{Delivered SVA training for the digital team which gained a deeper understanding of assertions and were able to apply this knowledge to improve the quality and efficiency of their digital design}.}
+            %\item {Continuous improvement of the digital development flow (checkers, automation, reconfigurability).}
+            \item {Implemented and enforced a Git message policy to ensure clear and consistent communication within the project's code repository. Clear and informative commit messages also helped in identifying the causes of bugs or issues, allowing the team to address them more quickly}
           \end{itemize}
         \end{itemize}
         \item {Silicon validation}
@@ -104,7 +99,7 @@
     }
 
   \cventry
-    {Digital Verification IC engineer} % Job title
+    {Digital IC engineer} % Job title
     {} % Organization
     {} % Location
     {May. 2017 - May 2018} % Date(s)
@@ -120,7 +115,7 @@
         \begin{itemize}
           \item {Verification of the SERDES design.}
           \item {Drove coverage analysis and reviewed list of waivers with the design/management team.}
-          \item {Optimization of the verification working flow.}
+          % \item {Optimization of the verification working flow.}
           \begin{itemize}
             \item {Setup verification scripting environment based on Python.}
             \item {Development of company UVM base classes and UVCs.}
@@ -138,6 +133,7 @@
           % 500Gbps GW IP, CNRZ 5b6w 6.25 x 4 = 25 Gbps per wire. Per chord -> 125 Gbps. 4 chords -> 500 Gbps
           % 1UI clk: 25Ghz
           % 32UI clk: 781.25 Mhz
+          % 
           \begin{itemize}
             \item {SDC Timing constraints development and validation.}
             \item {Signoff checks:}
