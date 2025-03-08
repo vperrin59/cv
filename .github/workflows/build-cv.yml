@@ -14,6 +14,8 @@ jobs:
         run: |
           apt update
           apt install -y fonts-roboto-unhinted
+      - name: Font check
+        run: fc-match Roboto
       - name: Building CV with bibliography
         run: |
           make cv.pdf   # First LaTeX pass
