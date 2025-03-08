@@ -15,8 +15,12 @@ examples: $(foreach x, coverletter cv resume, $x.pdf)
 
 # Fonts need to be installed before generating the CV
 font_setup:
-	mkdir ~/.fonts -p
-	cp fonts/*.ttf ~/.fonts
+	apt-get update && apt-get install -y wget
+	wget http://ftp.de.debian.org/debian/pool/contrib/m/msttcorefonts/ttf-mscorefonts-installer_3.8_all.deb
+	apt-get install -y ./ttf-mscorefonts-installer_3.8_all.deb
+	fc-match Verdana
+	cp fonts.conf /etc/fonts/conf.d/10-substitute-roboto-to-verdana.conf
+	fc-match Roboto
 
 resume.pdf: $(EXAMPLES_DIR)/resume.tex $(RESUME_SRCS)
 	$(CC) -output-directory=$(EXAMPLES_DIR) $<
