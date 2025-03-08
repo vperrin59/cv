@@ -9,13 +9,13 @@ jobs:
     steps:
       - name: Check for dockerenv file
         run: (ls /.dockerenv && echo Found dockerenv) || (echo No dockerenv)
-      - uses: actions/checkout@v3
+      - uses: actions/checkout@v4
       - name: Setup Fonts
         run: make font_setup
       - name: Building CV
         run: make cv.pdf
       - name: Store CV
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
             name: cv
             path: |
