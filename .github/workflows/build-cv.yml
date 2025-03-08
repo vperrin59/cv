@@ -12,8 +12,12 @@ jobs:
       - uses: actions/checkout@v4
       - name: Setup Fonts
         run: make font_setup
-      - name: Building CV
-        run: make cv.pdf
+      - name: Building CV with bibliography
+        run: |
+          make cv.pdf   # First LaTeX pass
+          make bib      # Run Biber to process bibliography
+          make cv.pdf   # Second LaTex pass for references
+          make cv.pdf   # Third LaTeX pass to finalize cross-references
       - name: Store CV
         uses: actions/upload-artifact@v4
         with:
