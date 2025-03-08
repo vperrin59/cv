@@ -30,9 +30,10 @@ coverletter.pdf: $(EXAMPLES_DIR)/coverletter.tex
 	$(CC) -output-directory=$(EXAMPLES_DIR) $<
 
 clean:
-	rm -rf $(EXAMPLES_DIR)/*.pdf
+	rm -rf $(MY_CV_OBJ_DIR)
 
 dbg:
+	fc-match Roboto
 	echo $(CV_SRCS)
 
 bib:$(MY_CV_DIR)/cv.tex $(MY_CV_DIR)/references.bib
