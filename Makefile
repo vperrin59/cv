@@ -5,6 +5,7 @@ CC = xelatex
 # CC = htlatex
 EXAMPLES_DIR = examples
 MY_CV_DIR = my_cv
+MY_CV_OBJ_DIR = my_cv/obj
 RESUME_DIR = examples/resume
 CV_DIR = my_cv/cv
 RESUME_SRCS = $(shell find $(RESUME_DIR) -name '*.tex')
@@ -20,8 +21,10 @@ font_setup:
 resume.pdf: $(EXAMPLES_DIR)/resume.tex $(RESUME_SRCS)
 	$(CC) -output-directory=$(EXAMPLES_DIR) $<
 
+# Changing the output directory is affecting LaTeX path resolution
 cv.pdf: $(MY_CV_DIR)/cv.tex $(CV_SRCS)
-	$(CC) -output-directory=$(MY_CV_DIR) $<
+	mkdir -p $(MY_CV_OBJ_DIR)
+	export TEXINPUTS=$(MY_CV_DIR)//:;$(CC) -output-directory=$(MY_CV_OBJ_DIR) $<
 
 coverletter.pdf: $(EXAMPLES_DIR)/coverletter.tex
 	$(CC) -output-directory=$(EXAMPLES_DIR) $<
@@ -33,6 +36,6 @@ dbg:
 	echo $(CV_SRCS)
 
 bib:$(MY_CV_DIR)/cv.tex $(MY_CV_DIR)/references.bib
-	biber $(MY_CV_DIR)/cv
+	biber $(MY_CV_OBJ_DIR)/cv --input-directory=$(MY_CV_DIR)
 
 all: cv.pdf bib cv.pdf

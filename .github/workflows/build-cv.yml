@@ -23,4 +23,4 @@ jobs:
         with:
             name: cv
             path: |
-              my_cv/cv.pdf
+              my_cv/obj/cv.pdf
