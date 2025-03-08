@@ -1,5 +1,5 @@
 name: CV build
-run-name: ${{ github.actor }} is learning GitHub Actions
+# run-name: ${{ github.actor }} is learning GitHub Actions
 on: [push, workflow_dispatch]
 jobs:
   container-test-job:
