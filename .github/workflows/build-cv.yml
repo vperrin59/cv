@@ -11,7 +11,9 @@ jobs:
         run: (ls /.dockerenv && echo Found dockerenv) || (echo No dockerenv)
       - uses: actions/checkout@v4
       - name: Setup Fonts
-        run: make font_setup
+        run: |
+          apt update
+          apt install -y fonts-roboto-unhinted
       - name: Building CV with bibliography
         run: |
           make cv.pdf   # First LaTeX pass
