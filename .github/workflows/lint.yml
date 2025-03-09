@@ -1,0 +1,28 @@
+name: Lint Files
+
+on: [push, pull_request]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install yamllint
+        run: pip install yamllint
+
+      - name: Run yamllint
+        run: yamllint .
+
+      - name: Install editorconfig-checkerßßß
+        run: |
+          wget https://github.com/editorconfig-checker/editorconfig-checker/releases/download/v3.2.0/ec-linux-amd64.tar.gz
+          tar -xzf ec-linux-amd64.tar.gz
+          ./bin/ec-linux-amd64 ./my_cv/
+
+      # - name: Install EditorConfig Checker
+      #   run: wget -q https://github.com/editorconfig-checker/editorconfig-checker/releases/latest/download/editorconfig-checker_linux_amd64.tar.gz && tar -xzf editorconfig-checker_linux_amd64.tar.gz
+
+      # - name: Run EditorConfig Checker
+      #   run: ./bin/editorconfig-checker
