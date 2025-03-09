@@ -745,7 +745,7 @@
 % Define a line of cv information(skill)
 % Usage: \cvskill{<type>}{<skillset>}
 \newcommand*{\cvskill}[2]{%
-   \skilltypestyle{#1} & \skillsetstyle{#2} \\
+  \skilltypestyle{#1} & \skillsetstyle{#2} \\
 }
 
 % Define an environment for cvitems(for cventry)
@@ -838,10 +838,10 @@
 % Avoid splitting entries across page break (only for 3 or fewer lines)
 % Tip: http://tex.stackexchange.com/a/51261
 \AtBeginEnvironment{thebibliography}{%
-   \clubpenalty10000
-   \@clubpenalty \clubpenalty
-   \widowpenalty10000
-   \interlinepenalty5000}
+  \clubpenalty10000
+  \@clubpenalty \clubpenalty
+  \widowpenalty10000
+  \interlinepenalty5000}
 
 % Customized format, based on Fancy CV template created by Adrien Friggeri
 \DeclareFieldFormat[article]{title}{#1\par}
