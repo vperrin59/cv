@@ -31,8 +31,9 @@ cv.pdf: $(MY_CV_DIR)/cv.tex $(CV_SRCS)
 	mkdir -p $(MY_CV_OBJ_DIR)
 	export TEXINPUTS=$(MY_CV_DIR)//:;$(CC) $(CC_OPTS) -output-directory=$(MY_CV_OBJ_DIR) $<
 
-coverletter.pdf: $(EXAMPLES_DIR)/coverletter.tex
-	$(CC) -output-directory=$(EXAMPLES_DIR) $<
+coverletter.pdf: $(MY_CV_DIR)/coverletter.tex
+	mkdir -p $(MY_CV_OBJ_DIR)
+	$(CC) -output-directory=$(MY_CV_OBJ_DIR) $<
 
 clean:
 	rm -rf $(MY_CV_OBJ_DIR)

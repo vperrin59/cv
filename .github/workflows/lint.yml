@@ -20,7 +20,6 @@ jobs:
           mkdir -p tools && cd tools
           wget https://github.com/editorconfig-checker/editorconfig-checker/releases/download/v3.2.0/ec-linux-amd64.tar.gz
           tar -xzf ec-linux-amd64.tar.gz
-          ./bin/ec-linux-amd64 ./my_cv/
 
       - name: Run EditorConfig Checker
         run: ./tools/bin/ec-linux-amd64 ./my_cv/
