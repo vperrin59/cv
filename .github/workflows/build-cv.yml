@@ -28,3 +28,10 @@ jobs:
           name: cv
           path: |
             my_cv/obj/cv.pdf
+      - name: Create GitHub Release
+        uses: softprops/action-gh-release@v1
+        with:
+          tag_name: latest
+          files: cv.pdf
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
