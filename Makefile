@@ -1,6 +1,7 @@
 .PHONY: examples font_setup bib
 
 CC = xelatex
+CC_OPTS = -interaction=nonstopmode -file-line-error
 # HTML
 # CC = htlatex
 EXAMPLES_DIR = examples
@@ -28,7 +29,7 @@ resume.pdf: $(EXAMPLES_DIR)/resume.tex $(RESUME_SRCS)
 # Changing the output directory is affecting LaTeX path resolution
 cv.pdf: $(MY_CV_DIR)/cv.tex $(CV_SRCS)
 	mkdir -p $(MY_CV_OBJ_DIR)
-	export TEXINPUTS=$(MY_CV_DIR)//:;$(CC) -output-directory=$(MY_CV_OBJ_DIR) $<
+	export TEXINPUTS=$(MY_CV_DIR)//:;$(CC) $(CC_OPTS) -output-directory=$(MY_CV_OBJ_DIR) $<
 
 coverletter.pdf: $(EXAMPLES_DIR)/coverletter.tex
 	$(CC) -output-directory=$(EXAMPLES_DIR) $<
@@ -40,7 +41,7 @@ dbg:
 	fc-match Roboto
 	echo $(CV_SRCS)
 
-bib:$(MY_CV_DIR)/cv.tex $(MY_CV_DIR)/references.bib
+bib: $(MY_CV_DIR)/cv.tex $(MY_CV_DIR)/references.bib
 	biber $(MY_CV_OBJ_DIR)/cv --input-directory=$(MY_CV_DIR)
 
 all: cv.pdf bib cv.pdf
