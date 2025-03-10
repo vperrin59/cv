@@ -1,4 +1,4 @@
-name: Lint Files
+name: Lint Checks
 
 on: [push, pull_request]
 
