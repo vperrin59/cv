@@ -48,4 +48,4 @@ dbg:
 bib: $(MY_CV_DIR)/cv.tex $(MY_CV_DIR)/references.bib
 	biber $(MY_CV_OBJ_DIR)/cv --input-directory=$(MY_CV_DIR)
 
-all: cv.pdf bib cv.pdf
+all: cv.pdf bib cv.pdf coverletter.pdf
