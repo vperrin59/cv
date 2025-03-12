@@ -36,7 +36,7 @@ $(MY_CV_OBJ_DIR)/cv.txt: $(MY_CV_OBJ_DIR)/cv.pdf
 
 coverletter.pdf: $(MY_CV_DIR)/coverletter.tex
 	mkdir -p $(MY_CV_OBJ_DIR)
-	$(CC) -output-directory=$(MY_CV_OBJ_DIR) $<
+	export TEXINPUTS=$(MY_CV_DIR)//:;$(CC) -output-directory=$(MY_CV_OBJ_DIR) $<
 
 clean:
 	rm -rf $(MY_CV_OBJ_DIR)
