@@ -35,8 +35,8 @@ jobs:
         uses: softprops/action-gh-release@v1
         with:
           tag_name: latest
-          files:
-            - my_cv/obj/cv.pdf
-            - my_cv/obj/coverletter.pdf
+          files: |
+            my_cv/obj/cv.pdf
+            my_cv/obj/coverletter.pdf
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
