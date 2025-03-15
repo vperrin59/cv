@@ -18,10 +18,7 @@ jobs:
         run: fc-match Roboto
       - name: Building CV with bibliography
         run: |
-          make cv.pdf   # First LaTeX pass
-          make bib      # Run Biber to process bibliography
-          make cv.pdf   # Second LaTex pass for references
-          make cv.pdf   # Third LaTeX pass to finalize cross-references
+          make cv.pdf
       - name: Store CV
         uses: actions/upload-artifact@v4
         with:

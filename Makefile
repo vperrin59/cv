@@ -1,4 +1,4 @@
-.PHONY: examples font_setup bib
+.PHONY: examples font_setup bib test
 
 CC = xelatex
 CC_OPTS = -interaction=nonstopmode -file-line-error
@@ -26,10 +26,16 @@ font_setup:
 resume.pdf: $(EXAMPLES_DIR)/resume.tex $(RESUME_SRCS)
 	$(CC) -output-directory=$(EXAMPLES_DIR) $<
 
-# Changing the output directory is affecting LaTeX path resolution
-cv.pdf: $(MY_CV_DIR)/cv.tex $(CV_SRCS)
+$(MY_CV_OBJ_DIR)/cv.pdf: $(MY_CV_DIR)/cv.tex $(CV_SRCS)
 	mkdir -p $(MY_CV_OBJ_DIR)
 	export TEXINPUTS=$(MY_CV_DIR)//:;$(CC) $(CC_OPTS) -output-directory=$(MY_CV_OBJ_DIR) $<
+
+# Changing the output directory is affecting LaTeX path resolution
+cv.pdf: $(MY_CV_DIR)/cv.tex $(CV_SRCS)
+	make $(MY_CV_OBJ_DIR)/cv.pdf
+	make bib
+	make -B $(MY_CV_OBJ_DIR)/cv.pdf
+	make -B $(MY_CV_OBJ_DIR)/cv.pdf
 
 $(MY_CV_OBJ_DIR)/cv.txt: $(MY_CV_OBJ_DIR)/cv.pdf
 	pdftotext $< $*
@@ -45,7 +51,12 @@ dbg:
 	fc-match Roboto
 	echo $(CV_SRCS)
 
-bib: $(MY_CV_DIR)/cv.tex $(MY_CV_DIR)/references.bib
+$(MY_CV_OBJ_DIR)/cv.bbl: $(MY_CV_DIR)/cv.tex $(MY_CV_DIR)/references.bib $(MY_CV_OBJ_DIR)/cv.bcf
 	biber $(MY_CV_OBJ_DIR)/cv --input-directory=$(MY_CV_DIR)
+
+bib: $(MY_CV_OBJ_DIR)/cv.bbl
+
+test: $(MY_CV_DIR)/cv.tex
+	export TEXINPUTS=$(MY_CV_DIR)//:;export BIBINPUTS=$(MY_CV_DIR)//:;latexmk -pdf -xelatex -output-directory=$(MY_CV_OBJ_DIR) $<
 
 all: cv.pdf bib cv.pdf coverletter.pdf
