@@ -1,0 +1,23 @@
+name: Grammar checks
+
+on: [push, pull_request]
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Install vale
+        run: |
+          make vale_setup
+
+      - name: Generate text files
+        run: |
+          make my_cv/obj/cv.txt
+          make my_cv/obj/coverletter.txt
+
+      - name: Vale check
+        run: |
+          make vale_run
