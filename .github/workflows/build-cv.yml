@@ -2,7 +2,7 @@ name: CV build
 # run-name: ${{ github.actor }} is learning GitHub Actions
 on: [push, workflow_dispatch]
 jobs:
-  container-test-job:
+  cv-build:
     runs-on: ubuntu-latest
     container:
       image: danteev/texlive

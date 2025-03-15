@@ -3,7 +3,7 @@ name: Grammar checks
 on: [push, pull_request]
 
 jobs:
-  lint:
+  vale:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout code

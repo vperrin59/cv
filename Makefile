@@ -65,6 +65,7 @@ test: $(MY_CV_DIR)/cv.tex
 	export TEXINPUTS=$(MY_CV_DIR)//:;export BIBINPUTS=$(MY_CV_DIR)//:;latexmk -pdf -xelatex -output-directory=$(MY_CV_OBJ_DIR) $<
 
 vale_setup:
+	mkdir -p tools
 	cd tools && curl -fsSL https://github.com/errata-ai/vale/releases/download/v3.9.6/vale_3.9.6_Linux_64-bit.tar.gz | tar xz
 
 vale_run: $(MY_CV_OBJ_DIR)/cv.txt
