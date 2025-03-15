@@ -5,6 +5,8 @@ on: [push, pull_request]
 jobs:
   vale:
     runs-on: ubuntu-latest
+    container:
+      image: danteev/texlive
     steps:
       - name: Checkout code
         uses: actions/checkout@v4
