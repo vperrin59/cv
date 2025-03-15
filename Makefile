@@ -37,8 +37,13 @@ cv.pdf: $(MY_CV_DIR)/cv.tex $(CV_SRCS)
 	make -B $(MY_CV_OBJ_DIR)/cv.pdf
 	make -B $(MY_CV_OBJ_DIR)/cv.pdf
 
-$(MY_CV_OBJ_DIR)/cv.txt: $(MY_CV_OBJ_DIR)/cv.pdf
-	pdftotext $< $*
+$(MY_CV_OBJ_DIR)/cv.txt: $(MY_CV_DIR)/cv.tex
+	mkdir -p $(MY_CV_OBJ_DIR)
+	cd $(MY_CV_DIR) && pandoc -t plain cv.tex -o obj/cv.txt
+
+$(MY_CV_OBJ_DIR)/coverletter.txt: $(MY_CV_DIR)/coverletter.tex
+	mkdir -p $(MY_CV_OBJ_DIR)
+	cd $(MY_CV_DIR) && pandoc -t plain coverletter.tex -o obj/coverletter.txt
 
 coverletter.pdf: $(MY_CV_DIR)/coverletter.tex
 	mkdir -p $(MY_CV_OBJ_DIR)
@@ -58,5 +63,12 @@ bib: $(MY_CV_OBJ_DIR)/cv.bbl
 
 test: $(MY_CV_DIR)/cv.tex
 	export TEXINPUTS=$(MY_CV_DIR)//:;export BIBINPUTS=$(MY_CV_DIR)//:;latexmk -pdf -xelatex -output-directory=$(MY_CV_OBJ_DIR) $<
+
+vale_setup:
+	cd tools && curl -fsSL https://github.com/errata-ai/vale/releases/download/v3.9.6/vale_3.9.6_Linux_64-bit.tar.gz | tar xz
+
+vale_run: $(MY_CV_OBJ_DIR)/cv.txt
+	./tools/vale --config ./.vale.ini --minAlertLevel=error my_cv/obj/cv.txt
+	./tools/vale --config ./.vale.ini --minAlertLevel=error my_cv/obj/coverletter.txt
 
 all: cv.pdf bib cv.pdf coverletter.pdf
